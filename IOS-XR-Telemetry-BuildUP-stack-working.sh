@@ -92,11 +92,11 @@ echo -e "\e[1;32m Installing PIP \e[0m";
 apt-get -y install zip
 apt-get -y install python-pip
 echo -e "\e[1;32m Installing Requests \e[0m";
-pip install requests==2.18.4
+pip install requests==2.18.4  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 echo -e "\e[1;32m Installing Flask \e[0m";
-pip install flask==1.0.2
+pip install flask==1.0.2  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
 echo -e "\e[1;32m Installing screen \e[0m";
-apt-get -y install screen=4.3.1-2build1
+apt-get -y install screen
 echo -e "\e[1;32m Installing wget \e[0m";
 apt-get -y install wget
 echo -e "\e[1;32m Installing cURL \e[0m";
