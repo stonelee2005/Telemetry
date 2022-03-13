@@ -1,0 +1,4 @@
+snmp-server community public ro
+snmp-server enable traps
+snmp-server host 10.1.1.2 traps trapcomm
+commit 
