@@ -78,7 +78,7 @@ if [[ ${PROXY:0:1} == "#" ]]
 then
   :
 else
-  echo "Acquire::https::Proxy \"$PROXY\";" >> /etc/apt/apt.conf
+  echo "Acquire::https::Proxy \"$PROXY\";" >> /etc/apt/apt.conf.d/proxy.conf
   sleep 1
   echo -e "\e[1;45m PROXY information was added \e[0m";
 fi
@@ -92,9 +92,26 @@ echo -e "\e[1;32m Installing PIP \e[0m";
 apt-get -y install python
 apt-get -y install python-pip
 echo -e "\e[1;32m Installing Requests \e[0m";
-pip install requests==2.18.4  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+if [[ ${PROXY:0:1} == "#" ]]
+then
+  pip install requests==2.18.4
+  :
+else
+  pip install requests==2.18.4  --proxy \"$PROXY\"
+fi
+
 echo -e "\e[1;32m Installing Flask \e[0m";
-pip install flask==1.0.2  -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com
+
+if [[ ${PROXY:0:1} == "#" ]]
+then
+  pip install flask==1.0.2
+  :
+else
+  pip install flask==1.0.2  --proxy \"$PROXY\"
+fi
+
+
 echo -e "\e[1;32m Installing zip \e[0m";
 apt-get -y install zip
 echo -e "\e[1;32m Installing screen \e[0m";
